@@ -174,12 +174,31 @@ Nếu WP chưa tồn tại, gộp luôn trong một yêu cầu:
 > - Đo miễn nhiễm
 > - Tổng hợp kết quả
 
-### 7.3. Giao việc / mức độ ưu tiên (tuỳ chọn)
-Mặc định task được **giao cho chính bạn**, ưu tiên **trung bình**. Muốn khác thì nói thêm:
+### 7.3. Chia việc lớn → nhiều task kèm mô tả, mandays, RASCI, %
+Đây là cách dùng mạnh nhất. Bạn mô tả **một công việc lớn**, để Claude tự chia nhỏ và tạo hàng loạt.
 
-> **…, các task này để ưu tiên cao và giao cho tôi**
+Ví dụ:
 
-> Ghi chú: mặc định mỗi task giao cho người đang đăng nhập. Muốn giao cho người khác cần biết tài khoản họ trên ERP — hiện bản này ưu tiên giao cho chính bạn cho đơn giản.
+> **Tôi cần làm bộ nguồn 3kW. Hãy chia thành các task chi tiết, mỗi task ghi mô tả, số mandays,
+> và giao RASCI: thiết kế mạch giao anh A làm chính (R) 80%, chị B kiểm tra (C); layout PCB anh C (R).
+> Sau đó tạo tất cả vào work package 1.1 dự án PHN.**
+
+Claude sẽ:
+1. Nghĩ ra ~10 task kèm mô tả + mandays + ai giữ vai trò gì (RASCI) + % effort.
+2. **Cho bạn xem trước danh sách** — bạn đọc, chỉnh nếu cần.
+3. Khi bạn đồng ý, tạo lần lượt vào `1.1`.
+
+**Về RASCI** (vai trò trong task):
+- **R** = Người làm chính · **A** = Người chịu trách nhiệm duyệt · **S** = Hỗ trợ · **C** = Được hỏi ý kiến · **I** = Được thông báo.
+- Mỗi người có thể mang nhiều chữ (vd `AR`), kèm **% effort** người đó hưởng.
+- Người được giao **tự động được thêm vào thành viên dự án** (không cần thêm tay trước).
+
+**Về người**: gọi bằng **tên**, **mã nhân viên** hoặc **email**. Nếu trùng tên, Claude sẽ hỏi lại cho rõ.
+Muốn xem danh sách: *"liệt kê nhân sự"*.
+
+**Về mandays**: là số ngày công của task. Bạn nói *"task này 3 mandays"* là được.
+
+> Không nêu người → task giao cho **chính bạn**, ưu tiên **trung bình** (mặc định).
 
 ---
 
