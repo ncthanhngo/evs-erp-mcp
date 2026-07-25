@@ -24,5 +24,13 @@ xattr -d com.apple.quarantine "$BIN" 2>/dev/null || true
 
 echo
 "$BIN" setup
+
+# Tạo lệnh ngắn `erp` (best-effort) để sau này gõ: erp update
+if ln -sf "$BIN" /usr/local/bin/erp 2>/dev/null; then
+  UPDATE_CMD="erp update"
+else
+  UPDATE_CMD="$BIN update"
+fi
 echo
+echo "Cập nhật sau này:  $UPDATE_CMD"
 echo "Xong. Đóng cửa sổ này."

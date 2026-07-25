@@ -19,6 +19,10 @@ if errorlevel 1 (
 echo.
 "%BIN%" setup
 
+REM Tao lenh ngan `erp` trong thu muc cai (goi: erp update tu thu muc do)
+> "%DEST%\erp.bat" echo @"%%~dp0evs-erp-mcp.exe" %%*
+
 echo.
+echo Cap nhat sau nay:  "%BIN%" update
 echo Xong. Nhan phim bat ky de dong.
 pause >nul

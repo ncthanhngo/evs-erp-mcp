@@ -22,3 +22,15 @@ và cấu hình Claude Desktop. Mật khẩu **không** được lưu.
 ## Dùng
 
 Trong Claude Desktop: "liệt kê project của tôi" → chọn project → "tạo module/WP/task ...".
+
+## Cập nhật
+
+Sau khi cài, muốn lên bản mới nhất:
+
+```bash
+erp update            # macOS (nếu có lệnh ngắn)
+~/.evs-erp-mcp/evs-erp-mcp update   # macOS đầy đủ
+```
+Windows: `"%USERPROFILE%\.evs-erp-mcp\evs-erp-mcp.exe" update`
+
+Tự tải binary mới nhất và thay tại chỗ, không phải login lại. Restart Claude Desktop sau đó.
