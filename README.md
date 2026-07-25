@@ -3,6 +3,8 @@
 MCP server cho **Claude Desktop** tạo project / module / work-package / task thật trên EVS ERP,
 bằng chính tài khoản ERP của bạn. Không cần cài Node.
 
+> 📖 Người mới, chưa rành kỹ thuật? Đọc [HƯỚNG DẪN CHI TIẾT](HUONG-DAN.md).
+
 ## Cài đặt
 
 ### macOS
