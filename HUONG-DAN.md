@@ -101,9 +101,9 @@ Mở Claude Desktop, tạo một đoạn chat mới và gõ thử:
 Bạn **không cần nhớ lệnh kỹ thuật**. Cứ nói chuyện bình thường bằng tiếng Việt. Dưới đây là các việc hay dùng.
 
 ### 6.1. Chọn dự án để làm việc
-Vì bạn có thể có nhiều dự án, hãy chọn 1 dự án trước:
+Vì bạn có thể có nhiều dự án, hãy chọn 1 dự án trước. Gọi bằng **mã dự án**, **tên viết tắt** hoặc **tên đầy đủ**:
 
-> **Chọn dự án "Bộ sạc EV 3kW" để làm việc**
+> **Chọn dự án PHN**
 
 Claude sẽ ghi nhớ dự án này cho các thao tác tiếp theo.
 
@@ -122,13 +122,29 @@ Dự án (Project)
          └─ Công việc (Task)   ← thứ bạn tạo nhiều nhất
 ```
 
-### 6.4. Tạo hạng mục và gói công việc
-> **Trong dự án đang chọn, tạo hạng mục "Firmware", rồi trong đó tạo gói công việc "Bring-up bo mạch"**
+### 6.4. Cách gọi tắt theo số vị trí
+Trong dự án, mọi thứ được đánh **số thứ tự** để gọi cho nhanh (đếm từ 1, theo thứ tự hiển thị):
 
-### 6.5. Xem đang có những gì
-> **Liệt kê các hạng mục trong dự án này**
->
-> **Liệt kê các gói công việc (work package) trong dự án này**
+- `1` = hạng mục (module) thứ 1
+- `1.1` = gói công việc thứ 1 **trong** hạng mục thứ 1
+- `1.2` = gói công việc thứ 2 trong hạng mục thứ 1
+
+Nhờ vậy bạn chỉ cần nói: *"tạo task trong **1.1** dự án **PHN**"* là đủ.
+
+### 6.5. Xem cây dự án (kèm số vị trí)
+> **Xem cấu trúc dự án PHN**
+
+Claude hiện dạng:
+```
+1. Cơ khí
+   1.1 Khung xe
+   1.2 Vỏ máy
+2. Điện
+   2.1 Mạch nguồn
+```
+
+### 6.6. Tạo hạng mục và gói công việc
+> **Trong dự án PHN, tạo hạng mục "Firmware", rồi trong hạng mục đó tạo gói công việc "Bring-up bo mạch"**
 
 ---
 
@@ -136,20 +152,18 @@ Dự án (Project)
 
 Đây là phần mạnh nhất. Bạn liệt kê nhiều việc một lần, Claude tạo hết.
 
-### 7.1. Thêm nhiều task vào một WP **đã có sẵn**
-Trước tiên xem danh sách WP để biết tên/đúng chỗ:
+### 7.1. Thêm nhiều task vào một WP **đã có sẵn** (theo số vị trí)
+Xem cây để biết số vị trí (mục 6.5), rồi chỉ cần nói vị trí:
 
-> **Liệt kê các gói công việc trong dự án này**
-
-Rồi yêu cầu (ví dụ):
-
-> **Trong gói công việc "Bring-up bo mạch", tạo giúp tôi các công việc sau, mỗi dòng là một task:**
+> **Trong dự án PHN, work package 1.1, tạo giúp tôi các công việc sau, mỗi dòng một task:**
 > - Kiểm tra nguồn 3V3 và 5V
 > - Nạp firmware thử nghiệm
 > - Đo dạng sóng UART
 > - Viết báo cáo bring-up
 
-Claude sẽ tạo lần lượt và báo lại từng task đã tạo (kèm mã).
+Claude sẽ tạo lần lượt vào đúng WP `1.1` và báo lại từng task đã tạo.
+
+> Nếu bạn nói vị trí chưa tồn tại (vd `1.5` mà module 1 chưa có WP thứ 5), Claude sẽ báo rõ và gợi ý tạo WP mới kèm tên.
 
 ### 7.2. Vừa tạo WP mới **vừa** đổ task vào
 Nếu WP chưa tồn tại, gộp luôn trong một yêu cầu:
