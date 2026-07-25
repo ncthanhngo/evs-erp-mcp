@@ -1,10 +1,24 @@
 # evs-erp-mcp
 
-Bản phát hành binary cho **EVS ERP MCP server** — cho Claude Desktop tạo project/module/work-package/task trên EVS ERP.
+MCP server cho **Claude Desktop** tạo project / module / work-package / task thật trên EVS ERP,
+bằng chính tài khoản ERP của bạn. Không cần cài Node.
 
 ## Cài đặt
 
-Xin file `install.command` (macOS) hoặc `install.bat` (Windows) từ quản trị nội bộ,
-double-click để chạy → nhập tài khoản ERP → xong.
+### macOS
+Mở Terminal, dán:
+```bash
+curl -fsSL https://raw.githubusercontent.com/ncthanhngo/evs-erp-mcp/main/install.command -o ~/Downloads/install.command && bash ~/Downloads/install.command
+```
 
-Installer tự tải binary mới nhất từ [Releases](../../releases/latest) và cấu hình Claude Desktop.
+### Windows
+Tải [install.bat](https://raw.githubusercontent.com/ncthanhngo/evs-erp-mcp/main/install.bat) → double-click.
+
+Nhập email + mật khẩu ERP → Enter → restart Claude Desktop. Xong.
+
+Installer tự tải binary từ [Releases](../../releases/latest), lưu `refresh_token` (30 ngày),
+và cấu hình Claude Desktop. Mật khẩu **không** được lưu.
+
+## Dùng
+
+Trong Claude Desktop: "liệt kê project của tôi" → chọn project → "tạo module/WP/task ...".
