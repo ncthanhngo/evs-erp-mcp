@@ -25,12 +25,21 @@ xattr -d com.apple.quarantine "$BIN" 2>/dev/null || true
 echo
 "$BIN" setup
 
-# Tạo lệnh ngắn `erp` (best-effort) để sau này gõ: erp update
+# Tạo lệnh ngắn `erp` để sau này gõ: erp login / erp update.
+# /usr/local/bin thường không ghi được nếu không có Homebrew → lùi về ~/.local/bin
+# (nằm sẵn trong PATH của zsh trên macOS gần đây; nếu chưa có thì nhắc user thêm).
+UPDATE_CMD="$BIN update"
 if ln -sf "$BIN" /usr/local/bin/erp 2>/dev/null; then
   UPDATE_CMD="erp update"
-else
-  UPDATE_CMD="$BIN update"
+elif mkdir -p "$HOME/.local/bin" && ln -sf "$BIN" "$HOME/.local/bin/erp" 2>/dev/null; then
+  UPDATE_CMD="erp update"
+  case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) echo "Thêm dòng này vào ~/.zshrc để gõ được lệnh ngắn 'erp':"
+       echo '  export PATH="$HOME/.local/bin:$PATH"' ;;
+  esac
 fi
 echo
-echo "Cập nhật sau này:  $UPDATE_CMD"
+echo "Đăng nhập lại sau này:  ${UPDATE_CMD%% *} login"
+echo "Cập nhật sau này:       $UPDATE_CMD"
 echo "Xong. Đóng cửa sổ này."

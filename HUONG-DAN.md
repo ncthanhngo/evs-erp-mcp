@@ -65,7 +65,8 @@ Các CLI này chạy binary trên máy. Cài + đăng nhập trước:
 
 **macOS** — chạy installer như [mục 2] (tải binary về `~/.evs-erp-mcp/`), hoặc chỉ đăng nhập:
 ```bash
-~/.evs-erp-mcp/evs-erp-mcp login
+erp login                          # installer tạo sẵn lệnh ngắn này
+~/.evs-erp-mcp/evs-erp-mcp login   # nếu chưa có lệnh ngắn
 ```
 **Windows**: `"%USERPROFILE%\.evs-erp-mcp\evs-erp-mcp.exe" login`
 
@@ -120,6 +121,7 @@ Trong trợ lý, gõ thử:
 - Trong dự án, mọi thứ đánh **số thứ tự** (đếm từ 1, theo thứ tự hiển thị):
   - `1` = hạng mục (module) thứ 1
   - `1.1` = gói công việc (WP) thứ 1 trong hạng mục thứ 1
+  - `1.1.2` = **công việc (task)** thứ 2 trong gói `1.1`
 
 Xem cây để biết số:
 > **Xem cấu trúc dự án PHN**
@@ -166,6 +168,31 @@ Mỗi người có thể mang nhiều chữ (vd `AR`) kèm **% effort**. Ngườ
 - **Người**: gọi bằng **tên / mã nhân viên / email**. Trùng tên → AI hỏi lại. Xem danh sách: *"liệt kê nhân sự"*.
 - **Mandays**: số ngày công của task — nói *"task này 3 mandays"*.
 - Không nêu người → task giao **chính bạn**, ưu tiên **trung bình**.
+
+---
+
+## 7b. Sửa task đã có
+
+Xem task để biết số vị trí (dạng `1.1.2`):
+> **Liệt kê task trong 1.1 dự án PHN**
+```
+- 1.1.1 Viết driver UART · đang làm · 3 công · Nguyễn Văn A
+- 1.1.2 Đo nhiễu EMC · chưa làm · 2 công
+```
+
+Rồi nói thẳng việc cần sửa (gọi task bằng **số vị trí** hoặc **tên**):
+> **Sửa task 1.1.2 dự án PHN: đổi tên thành "Đo nhiễu EMC lần 2", 4 mandays, ưu tiên cao**
+> **Chuyển task 1.1.2 sang trạng thái đang làm**
+> **Chuyển task 1.1.2 sang gói công việc 1.3**
+> **Giao task 1.1.2 cho chị B làm chính (R) 60%** · **Gỡ anh C khỏi task 1.1.2**
+
+Lưu ý:
+- Chỉ field bạn nêu mới bị đổi, phần còn lại giữ nguyên.
+- Rời trạng thái *chưa làm* cần task có đủ **ngày bắt đầu + kết thúc**.
+- Huỷ task phải kèm **lý do**.
+- Task thuộc **tháng đã đóng sổ** mà sửa công/ngày → phải nêu **lý do ≥10 ký tự** (ERP ghi lại vết).
+- Một task chỉ được có **một người mang chữ A**.
+- Sửa nhiều task cùng lúc → AI phải cho bạn xem danh sách thay đổi và **chờ bạn đồng ý** rồi mới chạy.
 
 ---
 

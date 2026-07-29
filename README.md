@@ -25,6 +25,9 @@ và cấu hình Claude Desktop. Mật khẩu **không** được lưu.
 
 Trong Claude Desktop: "liệt kê project của tôi" → chọn project → "tạo module/WP/task ...".
 
+Sửa việc đã có: "liệt kê task trong 1.1 dự án PHN" → "sửa task 1.1.2: 4 mandays, ưu tiên cao" ·
+"giao task 1.1.2 cho chị B làm chính (R) 60%".
+
 ## Cập nhật
 
 Sau khi cài, muốn lên bản mới nhất:
@@ -36,3 +39,13 @@ erp update            # macOS (nếu có lệnh ngắn)
 Windows: `"%USERPROFILE%\.evs-erp-mcp\evs-erp-mcp.exe" update`
 
 Tự tải binary mới nhất và thay tại chỗ, không phải login lại. Restart Claude Desktop sau đó.
+
+## Đăng nhập lại
+
+"Vé thông hành" hết hạn 30 ngày → chạy lại (đổi `update` thành `login`):
+
+```bash
+erp login                          # macOS (nếu có lệnh ngắn)
+~/.evs-erp-mcp/evs-erp-mcp login   # macOS đầy đủ
+```
+Windows: `"%USERPROFILE%\.evs-erp-mcp\evs-erp-mcp.exe" login`
