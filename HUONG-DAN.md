@@ -22,7 +22,14 @@ Máy chủ chạy sẵn tại **`https://mcp.evselab.com/mcp`**. Không tải, k
 
 > ChatGPT: tính năng connector tùy **gói** (thường Plus/Pro/Team/Enterprise, có thể phải bật "Developer mode").
 
-### Claude Code CLI (dùng remote, khỏi cài binary)
+### Claude Code CLI — thường **không phải làm gì thêm**
+
+Connector thêm ở trên gắn vào **tài khoản claude.ai**, không phải riêng trang web. Claude Code CLI
+đăng nhập cùng tài khoản đó sẽ **tự có** ERP — kiểm bằng `claude mcp list`, thấy dòng
+`claude.ai ERP: https://mcp.evselab.com/mcp - ✔ Connected` là xong.
+
+Chỉ khi CLI **không** đăng nhập bằng tài khoản claude.ai (dùng API key / Bedrock / Vertex) mới phải
+tự khai báo bằng token riêng:
 ```bash
 # lấy token (nhập email/mật khẩu ERP):
 evs-erp-mcp remote-login https://mcp.evselab.com
@@ -30,7 +37,7 @@ evs-erp-mcp remote-login https://mcp.evselab.com
 claude mcp add evs-erp --transport http https://mcp.evselab.com/mcp --header "Authorization: Bearer <token>"
 ```
 
-→ Nếu bạn dùng **ChatGPT web / Claude web**, chỉ cần mục này. Xong luôn.
+→ Dùng **ChatGPT web / Claude web / Claude Code CLI**: chỉ cần mục này. Xong luôn — không cài gì lên máy.
 
 ---
 
@@ -98,9 +105,13 @@ Xong → mở lại CLI → sang [mục 4](#4-kiểm-tra-đã-kết-nối-chưa)
 | Bạn dùng | Cách | Mục |
 |---|---|---|
 | **ChatGPT web/desktop, Claude web** | Remote (dán địa chỉ) | **[1]** ⭐ |
-| **Claude Code CLI** | Remote hoặc local | [1] / [3] |
-| **Claude Desktop** (app) | Cài binary | [2] |
+| **Claude Code CLI** (đăng nhập claude.ai) | Đã có sẵn theo tài khoản, khỏi cài | **[1]** ⭐ |
+| **Claude Code CLI** (API key / Bedrock / Vertex) | Remote + token riêng | [1] |
+| **Claude Desktop** (app) | Cài binary — app không dùng được remote | [2] |
 | **Gemini CLI / Codex CLI** | Cài binary | [3] |
+
+> Dùng web + Claude Code CLI thì **không cần cài gì lên máy**. Chỉ cài binary khi cần Claude Desktop,
+> Gemini/Codex CLI, hoặc muốn chạy độc lập không qua hạ tầng claude.ai.
 
 ---
 
@@ -201,6 +212,9 @@ Lưu ý:
 | Hiện tượng | Cách xử lý |
 |---|---|
 | AI nói **không có công cụ ERP** | Chưa **khởi động lại** app sau khi cài/khai báo. Thoát hẳn rồi mở lại. |
+| **Có tool cũ, thiếu tool mới** (vd chưa có sửa task) | Danh sách công cụ được chụp lúc app/CLI khởi động. Thoát hẳn rồi mở lại (Claude Code: `/exit` rồi `claude`, hoặc `claude -c` để giữ mạch). |
+| `claude mcp list` báo **`! Needs authentication`** | Thường là blip lúc làm mới phiên — chạy lại lệnh 1-2 lần. Vẫn kẹt thì vào claude.ai → **Settings → Connectors** kết nối lại (đăng nhập ERP). |
+| Thấy **2 bộ công cụ ERP trùng nhau** | Vừa có connector claude.ai vừa khai báo bản local. Bỏ bớt 1: `claude mcp remove evs-erp -s user` (bỏ local), hoặc xoá connector ở claude.ai → Settings → Connectors. |
 | **Đăng nhập thất bại: Invalid credentials** | Sai email/mật khẩu. Đăng nhập lại (mật khẩu không hiện khi gõ là bình thường). |
 | Dùng vài tuần rồi **báo hết phiên** | "Vé thông hành" hết hạn 30 ngày. Local: chạy lại `evs-erp-mcp login`. Web/CLI remote: kết nối lại. |
 | macOS chặn **"không xác minh nhà phát triển"** | Chuột phải file → **Open** → **Open**. |
